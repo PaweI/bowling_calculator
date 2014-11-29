@@ -28,11 +28,11 @@ BowlingCalculator.prototype.shots = function(frame, shot1, shot2) {
   frames[frame]["roll1"] = shot1
   frames[frame]["roll2"] = shot2
   frames[frame]["result"] = shot1+shot2
-  if(frames[frame-1]["roll1"] === 10 ) {
-    frames[frame-1]["result"] += shot1+shot2
+  if(frame-1>0) {
+    if(frames[frame-1]["roll1"] === 10 ) {
+      frames[frame-1]["result"] += shot1+shot2
+    };
   };
-
-  console.log(frames)
   return shot1 + shot2
 };
 
