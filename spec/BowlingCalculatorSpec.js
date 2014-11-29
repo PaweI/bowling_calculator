@@ -12,6 +12,11 @@ describe("BowlingCalculator", function() {
         expect(bowling.shots(1,2,3)).toBe(5)
       });
 
+      it("if player knocks 5 pins in first frame and 5 in second", function() {
+        bowling.shots(1,3,2)
+        expect(bowling.shots(2,2,3)).toBe(10)
+      });
+
       it("if player knocks 10 pins in first roll", function() {
         expect(bowling.shots(1,10)).toBe(10)
       });
