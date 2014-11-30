@@ -45,12 +45,58 @@ describe("BowlingCalculator", function() {
       });
     });
 
-    describe("frames from 1 to 10", function() {
-      it("when player knocks 7 in first frame", function() {
+    describe("all ten frames", function() {
+      it("when player knocks 7 in all frames first frame", function() {
         bowling.shots(1,5,2)
-        expect();
+        bowling.shots(2,5,2)
+        bowling.shots(3,5,2)
+        bowling.shots(4,5,2)
+        bowling.shots(5,5,2)
+        bowling.shots(6,5,2)
+        bowling.shots(7,5,2)
+        bowling.shots(8,5,2)
+        bowling.shots(9,5,2)
+        expect(bowling.shots(10,5,2)).toBe(70)
       });
 
+      it("when player does couple of strikes in a row", function() {
+        bowling.shots(1,5,2)
+        bowling.shots(2,5,2)
+        bowling.shots(3,5,2)
+        bowling.shots(4,5,2)
+        bowling.shots(5,5,2)
+        bowling.shots(6,10)
+        bowling.shots(7,10)
+        bowling.shots(8,5,2)
+        bowling.shots(9,5,2)
+        expect(bowling.shots(10,5,2)).toBe(98)
+      });
+
+      it("when player does some spares and strike", function() {
+        bowling.shots(1,5,2)
+        bowling.shots(2,5,5)
+        bowling.shots(3,2,2)
+        bowling.shots(4,3,2)
+        bowling.shots(5,3,2)
+        bowling.shots(6,10)
+        bowling.shots(7,10)
+        bowling.shots(8,5,2)
+        bowling.shots(9,5,2)
+        expect(bowling.shots(10,5,2)).toBe(96)
+      });
+
+      it("when player does all the strikes", function () {
+        bowling.shots(1,10)
+        bowling.shots(2,10)
+        bowling.shots(3,10)
+        bowling.shots(4,10)
+        bowling.shots(5,10)
+        bowling.shots(6,10)
+        bowling.shots(7,10)
+        bowling.shots(8,10)
+        bowling.shots(9,10)
+        expect(bowling.shots(10,10,0)).toBe(270)
+      });
     });
   });
 });
