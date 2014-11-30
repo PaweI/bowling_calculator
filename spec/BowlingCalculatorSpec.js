@@ -95,7 +95,7 @@ describe("BowlingCalculator", function() {
         bowling.shots(7,10)
         bowling.shots(8,10)
         bowling.shots(9,10)
-        expect(bowling.shots(10,10,0)).toBe(270)
+        expect(bowling.shots(10,10,10,10)).toBe(300)
       });
     });
   });
