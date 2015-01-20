@@ -8,10 +8,12 @@ describe("BowlingCalculator", function() {
 
   describe("calculates", function() {
     it("Gutter game, when player didn't hit any pin at any frame", function() {
-      bowling.gutterGame()
-      expect(bowling.frame1.roll1).toBe(0)  
-      expect(bowling.frame1.roll2).toBe(0)  
-      expect(bowling.frame1.total).toBe(0)  
+      bowling.gutterGame();
+      expect(bowling.frames[0].roll1).toBe(0)  
+      expect(bowling.frames[0].roll2).toBe(0)  
+      expect(bowling.frames[0].total).toBe(0)  
+      expect(bowling.frames[9].total).toBe(0)  
     });
+
   });
 });

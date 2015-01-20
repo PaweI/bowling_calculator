@@ -1,13 +1,24 @@
 function BowlingCalculator() {
-  this.frame1 = {roll1: null, roll2: null, total: null};
-
+  this.frames = [{roll1: null, roll2: null, total: null},
+                 {roll1: null, roll2: null, total: null},
+                 {roll1: null, roll2: null, total: null},
+                 {roll1: null, roll2: null, total: null},
+                 {roll1: null, roll2: null, total: null},
+                 {roll1: null, roll2: null, total: null},
+                 {roll1: null, roll2: null, total: null},
+                 {roll1: null, roll2: null, total: null},
+                 {roll1: null, roll2: null, total: null},
+                 {roll1: null, roll2: null, roll3: null, total: null}]
 };
 
 BowlingCalculator.prototype.gutterGame = function() {
-  this.frame1.roll1 = 0;
-  this.frame1.roll2 = 0;
-  this.frame1.total = 0;
+  this.frames.forEach(function(frame) {
+    frame.roll1 = 0;
+    frame.roll2 = 0;
+    frame.total = 0;
+  });
 };
+
 
 
 
