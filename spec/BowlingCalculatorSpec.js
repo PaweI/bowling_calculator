@@ -15,5 +15,14 @@ describe("BowlingCalculator", function() {
       expect(bowling.frames[9].total).toBe(0)  
     });
 
+    it("Gutter game, when player hit all pins in all frames", function() {
+      bowling.perfectGame();
+      expect(bowling.frames[0].roll1).toBe(10)
+      expect(bowling.frames[2].roll1).toBe(10)
+      expect(bowling.frames[4].roll1).toBe(10)
+      expect(bowling.frames[6].roll1).toBe(10)
+      expect(bowling.frames[9].roll1).toBe(10)
+      expect(bowling.frames[9].total).toBe(300)
+    });
   });
 });

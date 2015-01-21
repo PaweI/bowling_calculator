@@ -19,6 +19,14 @@ BowlingCalculator.prototype.gutterGame = function() {
   });
 };
 
+BowlingCalculator.prototype.perfectGame = function() {
+  this.frames.forEach(function(frame) {
+    frame.roll1 = 10;
+    frame.total = 10; 
+  });
+  this.frames[9].total = 300;
+};
+
 
 
 
