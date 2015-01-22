@@ -27,6 +27,11 @@ BowlingCalculator.prototype.perfectGame = function() {
   this.frames[9].total = 300;
 };
 
+BowlingCalculator.prototype.strike = function(frame) {
+  frame.roll1 = 10;
+  frame.total = 10;
+};
+
 
 
 

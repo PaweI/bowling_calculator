@@ -24,5 +24,12 @@ describe("BowlingCalculator", function() {
       expect(bowling.frames[9].roll1).toBe(10)
       expect(bowling.frames[9].total).toBe(300)
     });
+
+    it("Strike, when player hit all pins in first roll", function() {
+      bowling.strike(bowling.frames[0]);
+      expect(bowling.frames[0].roll1).toBe(10)
+      expect(bowling.frames[0].roll2).toBe(null)
+      expect(bowling.frames[0].total).toBe(10)
+    });
   });
 });
