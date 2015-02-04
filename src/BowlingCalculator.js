@@ -8,8 +8,8 @@ function BowlingCalculator() {
                  {roll1: null, roll2: null, total: null},
                  {roll1: null, roll2: null, total: null},
                  {roll1: null, roll2: null, total: null},
-                 {roll1: null, roll2: null, roll3: null, total: null}]
-};
+                 {roll1: null, roll2: null, roll3: null, total: null}];
+}
 
 BowlingCalculator.prototype.gutterGame = function() {
   this.frames.forEach(function(frame) {
@@ -30,6 +30,12 @@ BowlingCalculator.prototype.perfectGame = function() {
 BowlingCalculator.prototype.strike = function(frame) {
   frame.roll1 = 10;
   frame.total = 10;
+};
+
+BowlingCalculator.prototype.spare = function(frame, roll1, roll2) {
+  this.frames[frame].roll1 = roll1;
+  this.frames[frame].roll2 = roll2;
+  this.frames[frame].total = 10;
 };
 
 
