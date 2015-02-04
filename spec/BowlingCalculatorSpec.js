@@ -38,5 +38,12 @@ describe("BowlingCalculator", function() {
       expect(bowling.frames[0].roll2).toBe(6);
       expect(bowling.frames[0].total).toBe(10);
     });
+
+    it("Normal game when less then 10 pins been hit in one frame", function() {
+      bowling.normalGame(0, 3, 4);
+      expect(bowling.frames[0].roll1).toBe(3);
+      expect(bowling.frames[0].roll2).toBe(4);
+      expect(bowling.frames[0].total).toBe(7);
+    });
   });
 });
