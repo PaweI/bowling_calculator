@@ -45,5 +45,11 @@ describe("BowlingCalculator", function() {
       expect(bowling.frames[0].roll2).toBe(4);
       expect(bowling.frames[0].total).toBe(7);
     });
+
+    it("Bonus when player hitted strike in previous frame", function() {
+      bowling.strike(bowling.frames[0]);
+      bowling.normalGame(1,3,4);
+      expect(bowling.frames[0].total).toBe(17);
+    });
   });
 });
