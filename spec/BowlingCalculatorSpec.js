@@ -51,5 +51,11 @@ describe("BowlingCalculator", function() {
       bowling.normalGame(1,3,4);
       expect(bowling.frames[0].total).toBe(17);
     });
+
+    it("Bonus when player hitted spare in previous game", function() {
+      bowling.spare(0,5,5);
+      bowling.normalGame(1,2,3);
+      expect(bowling.frames[0].total).toBe(12);
+    });
   });
 });

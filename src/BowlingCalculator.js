@@ -44,6 +44,8 @@ BowlingCalculator.prototype.normalGame = function(frame, roll1, roll2) {
   this.frames[frame].total = roll1 + roll2;
   if(frame>0 && this.frames[frame-1].roll1 === 10) {
     this.frames[frame-1].total += this.frames[frame].total;
+  } else if (frame>0 && this.frames[frame-1].total === 10) {
+    this.frames[frame-1].total += roll1;
   }
 };
 
