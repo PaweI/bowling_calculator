@@ -71,5 +71,17 @@ describe("BowlingCalculator", function() {
       bowling.strike(2);
       expect(bowling.frames[0].total).toBe(30);
     });
+
+    it("Bonus when player hitted two spares in the row", function() {
+      bowling.spare(0,5,5);
+      bowling.spare(1,5,5);
+      expect(bowling.frames[0].total).toBe(15);
+    }); 
+
+    it("Bonus when player hitted strike and then spare", function() {
+      bowling.strike(0);
+      bowling.spare(1,5,5);
+      expect(bowling.frames[0].total).toBe(20);
+    });              
   });
 });
