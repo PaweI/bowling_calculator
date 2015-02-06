@@ -26,7 +26,7 @@ describe("BowlingCalculator", function() {
     });
 
     it("Strike, when player hit all pins in first roll", function() {
-      bowling.strike(bowling.frames[0]);
+      bowling.strike(0);
       expect(bowling.frames[0].roll1).toBe(10);
       expect(bowling.frames[0].roll2).toBe(null);
       expect(bowling.frames[0].total).toBe(10);
@@ -47,7 +47,7 @@ describe("BowlingCalculator", function() {
     });
 
     it("Bonus when player hitted strike in previous frame", function() {
-      bowling.strike(bowling.frames[0]);
+      bowling.strike(0);
       bowling.normalGame(1,3,4);
       expect(bowling.frames[0].total).toBe(17);
     });
@@ -56,6 +56,13 @@ describe("BowlingCalculator", function() {
       bowling.spare(0,5,5);
       bowling.normalGame(1,2,3);
       expect(bowling.frames[0].total).toBe(12);
+    });
+
+    it("Extra bonus when player hitted two strikes in the row and then played normally", function() {
+      bowling.strike(0);
+      bowling.strike(1);
+      bowling.normalGame(2,5,3);
+      expect(bowling.frames[0].total).toBe(25);
     });
   });
 });
