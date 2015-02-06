@@ -64,5 +64,12 @@ describe("BowlingCalculator", function() {
       bowling.normalGame(2,5,3);
       expect(bowling.frames[0].total).toBe(25);
     });
+
+    it("Extra bonus when player hitted three strikes in the row", function() {
+      bowling.strike(0);
+      bowling.strike(1);
+      bowling.strike(2);
+      expect(bowling.frames[0].total).toBe(30);
+    });
   });
 });

@@ -30,7 +30,16 @@ BowlingCalculator.prototype.perfectGame = function() {
 BowlingCalculator.prototype.strike = function(frame) {
   this.frames[frame].roll1 = 10;
   this.frames[frame].total = 10;
-  if(frame>0 && this.frames[frame-1].roll1 === 10) {
+
+  if (frame>1 && this.frames[frame-2].roll1 === 10) {
+
+    if(this.frames[frame-1].roll1 === 10) {
+      this.frames[frame-2].total += 10;
+    }
+
+  }
+
+  else if(frame>0 && this.frames[frame-1].roll1 === 10) {
     this.frames[frame-1].total += this.frames[frame].total;
   }
 };
@@ -53,7 +62,7 @@ BowlingCalculator.prototype.normalGame = function(frame, roll1, roll2) {
     }
 
   }
-  
+
   else if (frame>0 && this.frames[frame-1].roll1 === 10) {
     this.frames[frame-1].total += this.frames[frame].total;
   } 
