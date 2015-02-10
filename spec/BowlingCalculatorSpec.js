@@ -85,17 +85,34 @@ describe("BowlingCalculator", function() {
     });
 
     it("full game without strikes or spares", function() {
-       bowling.normalGame(0,2,4);
-       bowling.normalGame(1,2,4);
-       bowling.normalGame(2,2,4);
-       bowling.normalGame(3,2,4);
-       bowling.normalGame(4,2,4);
-       bowling.normalGame(5,2,4);
-       bowling.normalGame(6,2,4);
-       bowling.normalGame(7,2,4);
-       bowling.normalGame(8,2,4);
-       bowling.normalGame(9,2,4);
-       expect(bowling.frames[9].total).toBe(60);
-    });             
+      bowling.normalGame(0,2,4);
+      bowling.normalGame(1,2,4);
+      bowling.normalGame(2,2,4);
+      bowling.normalGame(3,2,4);
+      bowling.normalGame(4,2,4);
+      bowling.normalGame(5,2,4);
+      bowling.normalGame(6,2,4);
+      bowling.normalGame(7,2,4);
+      bowling.normalGame(8,2,4);
+      bowling.normalGame(9,2,4);
+      expect(bowling.frames[9].total).toBe(60);
+    }); 
+
+     it("full game with strikes", function() {
+      expect(bowling.bonusRoll.allowed).toBe(false);
+      bowling.strike(0);
+      bowling.strike(1);
+      bowling.strike(2);
+      bowling.strike(3);
+      bowling.strike(4);
+      bowling.strike(5);
+      bowling.strike(6);
+      bowling.strike(7);
+      bowling.strike(8);
+      bowling.strike(9);
+      expect(bowling.bonusRoll.allowed).toBe(true);
+      bowling.bonus(10, 10);
+      expect(bowling.frames[9].total).toBe(300);
+    });                
   });
 });

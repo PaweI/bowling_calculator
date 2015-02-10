@@ -1,3 +1,5 @@
+// needs refactoring
+
 function BowlingCalculator() {
   this.frames = [{roll1: null, roll2: null, total: null},
                  {roll1: null, roll2: null, total: null},
@@ -8,7 +10,8 @@ function BowlingCalculator() {
                  {roll1: null, roll2: null, total: null},
                  {roll1: null, roll2: null, total: null},
                  {roll1: null, roll2: null, total: null},
-                 {roll1: null, roll2: null, roll3: null, total: null}];
+                 {roll1: null, roll2: null, total: null}];
+  this.bonusRoll = {allowed: false, roll: null};
 }
 
 BowlingCalculator.prototype.gutterGame = function() {
@@ -31,17 +34,25 @@ BowlingCalculator.prototype.strike = function(frame) {
   this.frames[frame].roll1 = 10;
   this.frames[frame].total = 10;
 
+  if (frame === 9 && this.frames[frame].total === 10) {
+    this.bonusRoll.allowed = true;
+  }
+
+  if (frame>0 && this.frames[frame-1].roll1 === 10) {
+    this.frames[frame-1].total += 10;
+  }
+
   if (frame>1 && this.frames[frame-2].roll1 === 10) {
 
     if(this.frames[frame-1].roll1 === 10) {
       this.frames[frame-2].total += 10;
+      this.frames[frame-1].total += 10;
     }
 
   }
+  
+  this.total(frame);
 
-  else if(frame>0 && this.frames[frame-1].roll1 === 10) {
-    this.frames[frame-1].total += this.frames[frame].total;
-  }
 };
 
 BowlingCalculator.prototype.spare = function(frame, roll1, roll2) {
@@ -84,9 +95,30 @@ BowlingCalculator.prototype.normalGame = function(frame, roll1, roll2) {
 };
 
 BowlingCalculator.prototype.total = function(frame) {
-  if (frame !== 0) {
+  if (frame > 0) {
     this.frames[frame].total += this.frames[frame-1].total;
   }
+};
+
+BowlingCalculator.prototype.bonus = function(pin1, pin2) {
+  if (this.frames[9].roll1 === 10) {
+    this.frames[9].roll2 = pin1;
+  }
+
+  if (this.frames[9].roll1 === 10) {
+    this.frames[9].total += pin1;
+  }
+
+  if (this.frames[9].roll1 === 10) {
+
+    if(this.frames[9].roll2 === 10) {
+      this.frames[9].total += pin1;
+      this.frames[9].total += pin2;
+    }
+
+  }
+  
+  this.bonusRoll.roll = pin2;
 };
 
 
