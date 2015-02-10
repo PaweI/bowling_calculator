@@ -82,6 +82,20 @@ describe("BowlingCalculator", function() {
       bowling.strike(0);
       bowling.spare(1,5,5);
       expect(bowling.frames[0].total).toBe(20);
-    });              
+    });
+
+    it("full game without strikes or spares", function() {
+       bowling.normalGame(0,2,4);
+       bowling.normalGame(1,2,4);
+       bowling.normalGame(2,2,4);
+       bowling.normalGame(3,2,4);
+       bowling.normalGame(4,2,4);
+       bowling.normalGame(5,2,4);
+       bowling.normalGame(6,2,4);
+       bowling.normalGame(7,2,4);
+       bowling.normalGame(8,2,4);
+       bowling.normalGame(9,2,4);
+       expect(bowling.frames[9].total).toBe(60);
+    });             
   });
 });
