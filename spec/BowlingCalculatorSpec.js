@@ -113,6 +113,20 @@ describe("BowlingCalculator", function() {
       expect(bowling.bonusRoll.allowed).toBe(true);
       bowling.bonus(10, 10);
       expect(bowling.frames[9].total).toBe(300);
-    });                
+    });
+
+     it("full game with random hits: strikes, spares, normals", function() {
+      bowling.normalGame(0,3,2);
+      bowling.strike(1);
+      bowling.strike(2);
+      bowling.spare(3,5,5);
+      bowling.normalGame(4,2,4);
+      bowling.strike(5);
+      bowling.spare(6,5,5);
+      bowling.strike(7);
+      bowling.strike(8);
+      bowling.normalGame(9,2,4);
+      expect(bowling.frames[9].total).toBe(152);
+    });                       
   });
 });

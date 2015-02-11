@@ -67,6 +67,7 @@ BowlingCalculator.prototype.spare = function(frame, roll1, roll2) {
   else if (frame>0 && this.frames[frame-1].total === 10) {
     this.frames[frame-1].total += roll1;
   } 
+  this.total(frame);
 };
 
 BowlingCalculator.prototype.normalGame = function(frame, roll1, roll2) {
